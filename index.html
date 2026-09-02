@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stone Hill Ridge // Case File</title>
+    <meta
+      name="description"
+      content="Restricted internal investigation portal for Stone Hill Ridge, the quarantined town and the disappearance of Detective John."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="access-overlay" id="accessOverlay">
+      <div class="access-panel">
+        <div class="access-topline">INTERNAL ACCESS</div>
+        <h1>STONE HILL RIDGE</h1>
+        <p>
+          DETECTIVE JOHN // STATUS: MISSING IN QUARANTINE ZONE. ENTER THE CONFIRMATION CODE TO ACCESS CASE FILES.
+        </p>
+
+        <form id="passwordForm" class="password-form" autocomplete="off">
+          <label for="password">CONFIRMATION CODE</label>
+          <input id="password" type="password" maxlength="4" inputmode="numeric" placeholder="8 4 2 1" />
+          <button type="submit">ACCESS FILES</button>
+        </form>
+
+        <p id="lockdownTimer" class="lockdown-timer" aria-live="polite"></p>
+        <p id="errorMessage" class="error-message">ACCESS DENIED.</p>
+      </div>
+    </div>
+
+    <div class="site-shell" id="siteShell">
+      <div class="scanlines"></div>
+
+      <header class="topbar">
+        <div class="container topbar-inner">
+          <div class="brand">
+            <div class="brand-mark">DRA</div>
+            <div>
+              <p class="eyebrow">Department of Red Range Alerts</p>
+              <h1>STONE HILL RIDGE</h1>
+            </div>
+          </div>
+
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="#overview">Overview</a>
+            <a href="#reports">Reports</a>
+            <a href="#personnel">Personnel</a>
+            <a href="#intel">Intel</a>
+            <a href="#data">Data</a>
+          </nav>
+
+          <div class="status-pill">
+            <span class="dot"></span>
+            LOCKDOWN ZONE
+          </div>
+        </div>
+      </header>
+
+      <main id="overview">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <p class="tag">D.R.R.A. // DEPARTMENT OF RED RANGE ALERTS // FIELD BRIEFING NO. 17</p>
+              <h2>THE FREEZING HAS ENTERED STONE HILL RIDGE.</h2>
+              <p>
+                Stone Hill Ridge is a sealed municipal district currently operating under emergency quarantine after a rapid and unexplained outbreak of the condition classified as The Freezing. Civil movement is restricted, communications are monitored, and all active investigation remains under federal oversight due to the unresolved disappearance of Detective John Mercer.
+              </p>
+
+              <div class="hero-actions">
+                <button class="btn btn-primary" id="lockdownButton" type="button">LOCKDOWN ACTIVE</button>
+                <a class="btn btn-secondary" href="#intel">VIEW INTEL</a>
+              </div>
+
+              <ul class="hero-points">
+                <li>Quarantine enforcement remains active across all residential sectors</li>
+                <li>Field operators report severe cold-related degeneration and neurological collapse</li>
+                <li>Detective John Mercer was last observed entering the archive district before signal loss</li>
+              </ul>
+
+              <div class="disclaimer">
+                D.R.R.A. NOTICE: THIS FILE CONTAINS RESTRICTED INTEL. UNAUTHORIZED DISCLOSURE, REPRODUCTION, OR LEAKING OF ANY INFORMATION IS PROHIBITED UNDER FEDERAL REGULATION.
+              </div>
+            </div>
+
+            <div class="hero-panel">
+              <div class="panel-card">
+                <p class="panel-label">CURRENT STATUS</p>
+                <h3>LOCKDOWN</h3>
+                <div class="readout">
+                  <div>
+                    <span>Population</span>
+                    <strong>1,420</strong>
+                  </div>
+                  <div>
+                    <span>Casualties</span>
+                    <strong>318</strong>
+                  </div>
+                  <div>
+                    <span>Missing</span>
+                    <strong>27</strong>
+                  </div>
+                  <div>
+                    <span>Detective John</span>
+                    <strong>STATUS: MISSING</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats">
+          <div class="container stats-grid">
+            <div class="stat-box">
+              <strong>318</strong>
+              <span>Casualties</span>
+            </div>
+            <div class="stat-box">
+              <strong>27</strong>
+              <span>Missing</span>
+            </div>
+            <div class="stat-box">
+              <strong>14</strong>
+              <span>Quarantine Days</span>
+            </div>
+            <div class="stat-box">
+              <strong>01</strong>
+              <span>Unresolved Lead</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="reports" class="section about">
+          <div class="container split-layout">
+            <div>
+              <p class="section-tag">OPERATIONS SUMMARY</p>
+              <h3>OFFICIAL RESPONSE TO A DEGRADING COMMUNITY EVENT.</h3>
+            </div>
+            <div>
+              <p>
+                Following repeated reports of sudden cold exposure, neurological inability, and localized collapses, Stone Hill Ridge was placed under emergency containment. Residents were confined to sector blocks, municipal transit ceased, and all access to the eastern archive corridor was suspended. A number of infection clusters align with former service tunnels and storage depots, suggesting the incident is not isolated to the public health sphere but also to internal administrative disruption.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section services">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-tag">CASE FILES</p>
+              <h3>INCIDENT REPORTS AND FIELD DOCUMENTS.</h3>
+            </div>
+
+            <div class="card-grid">
+              <article class="service-card">
+                <div class="icon">01</div>
+                <h4>Q-17 / Lockdown Directive</h4>
+                <p>Emergency quarantine enacted after multiple concurrent failures in municipal response infrastructure and public communication.</p>
+              </article>
+              <article class="service-card">
+                <div class="icon">02</div>
+                <h4>Medical Failure Index</h4>
+                <p>Symptoms show marked hypothermia, central nervous impairment, and irreversible motor collapse in advanced stages.</p>
+              </article>
+              <article class="service-card">
+                <div class="icon">03</div>
+                <h4>East Checkpoint Breach</h4>
+                <p>Security records show a gap in surveillance coverage at the ridge access checkpoint preceding the disappearance.</p>
+              </article>
+              <article class="service-card">
+                <div class="icon">04</div>
+                <h4>Missing Personnel</h4>
+                <p>Detective John Mercer was last seen near the archive intake wing, carrying restricted investigation notes.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="personnel" class="section updates alt-bg">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-tag">PERSONNEL & INTERCEPTS</p>
+              <h3>PRIVATE STATEMENTS AND QUARANTINE NOTES.</h3>
+            </div>
+
+            <div class="news-grid">
+              <article class="news-item">
+                <span class="date">BIOGRAPHY</span>
+                <h4>Detective John Mercer</h4>
+                <p>Senior field investigator attached to internal security. Mercer was assigned to a restricted trace operation in Stone Hill Ridge after recurring anomalies in public response logs and quarantine administration.</p>
+              </article>
+              <article class="news-item">
+                <span class="date">FIELD NOTE</span>
+                <h4>Final Transmission</h4>
+                <p>"The town is not sick. It is changing." The transmission cut off approximately 02:17 local time, immediately after the archive relay was disabled.</p>
+              </article>
+              <article class="news-item">
+                <span class="date">EYEWITNESS</span>
+                <h4>Resident Statement</h4>
+                <p>A civilian witness reported hearing a low mechanical vibration beneath the street before dawn and seeing a figure moving between shuttered windows in the east block.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="intel" class="section data-block">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-tag">INTELLIGENCE // THE FREEZING</p>
+              <h3>FOUNDATIONAL ANALYSIS OF THE OUTBREAK.</h3>
+            </div>
+
+            <div class="intel-grid">
+              <div class="intel-panel">
+                <h4>Primary Symptoms</h4>
+                <ul>
+                  <li>Severe shivering and rapid core temperature collapse</li>
+                  <li>Blue-to-gray skin discoloration, tissue hardening, and frost-like surface damage</li>
+                  <li>Progressive speech disruption, memory fragmentation, and disrupted gait</li>
+                  <li>Extreme neurological distress followed by sudden loss of motor function</li>
+                  <li>Respiratory strain and muscular rigidity in advanced phases</li>
+                  <li>Documentation indicates erratic thermal readings even in heated interiors</li>
+                </ul>
+              </div>
+
+              <div class="intel-panel">
+                <h4>Transmission & Pattern Analysis</h4>
+                <ul>
+                  <li>Exposure patterns cluster near enclosed public spaces and old municipal corridors</li>
+                  <li>Cases accelerate after direct contact, contaminated water exposure, and confined air conditions</li>
+                  <li>Signal distortion repeats around archive facilities, tunnel networks, and eastern boundary routes</li>
+                  <li>Residents report unexplained voices and repeated motion in the dark before symptom onset</li>
+                  <li>Outbreak chronology aligns with administrative disruption and failed municipal logging</li>
+                  <li>Field teams suggest the condition is responding to environmental stressors rather than conventional infection alone</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-grid">
+              <article class="timeline-item">
+                <span class="marker">00:00</span>
+                <h4>Initial Disturbance</h4>
+                <p>Power flickers and municipal sensors fail in the northern transit corridor.</p>
+              </article>
+              <article class="timeline-item">
+                <span class="marker">02:17</span>
+                <h4>Signal Loss</h4>
+                <p>Detective John’s final transmission is intercepted before archive relay failure.</p>
+              </article>
+              <article class="timeline-item">
+                <span class="marker">04:42</span>
+                <h4>Checkpoint Breach</h4>
+                <p>Security logs show an unauthorized opening at the east ridge gate.</p>
+              </article>
+              <article class="timeline-item">
+                <span class="marker">06:03</span>
+                <h4>Containment Order</h4>
+                <p>Quarantine is expanded after an abrupt rise in severe cold-related collapse.</p>
+              </article>
+            </div>
+
+            <div class="dossier-grid">
+              <div class="dossier-card">
+                <span class="label">Affected Districts</span>
+                <strong>04</strong>
+                <p>North corridor, west housing, archive wing, and east service tunnel.</p>
+              </div>
+              <div class="dossier-card">
+                <span class="label">Reported Voices</span>
+                <strong>19</strong>
+                <p>Witness accounts of recurring calls from beneath the roads or within sealed rooms.</p>
+              </div>
+              <div class="dossier-card">
+                <span class="label">Nocturnal Movement</span>
+                <strong>13</strong>
+                <p>Repeated surveillance gaps during midnight hours between building blocks.</p>
+              </div>
+              <div class="dossier-card">
+                <span class="label">Critical Lead</span>
+                <strong>01</strong>
+                <p>Archive access log indicates organized alteration of local public records.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="data" class="section quick-links">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-tag">DATA</p>
+              <h3>CASUALTY FIGURES AND OPERATIONAL STATISTICS.</h3>
+            </div>
+
+            <div class="data-grid">
+              <div class="data-card">
+                <span>Total casualties</span>
+                <strong>318</strong>
+              </div>
+              <div class="data-card">
+                <span>Hospitalized</span>
+                <strong>143</strong>
+              </div>
+              <div class="data-card">
+                <span>Recovered</span>
+                <strong>11</strong>
+              </div>
+              <div class="data-card">
+                <span>Active cases</span>
+                <strong>204</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <h4>D.R.R.A.</h4>
+            <p>Department of Red Range Alerts. Restricted quarantine assessment and strategic containment archive for The Freezing outbreak.</p>
+          </div>
+          <div>
+            <h5>OPERATIONS</h5>
+            <ul>
+              <li>Case file // Active</li>
+              <li>Quarantine zone // Secured</li>
+              <li>Detective John // Missing</li>
+            </ul>
+          </div>
+          <div>
+            <h5>FILE STATUS</h5>
+            <ul>
+              <li>Reports // 64 files</li>
+              <li>Intelligence // Updated</li>
+              <li>Access // Restricted</li>
+            </ul>
+          </div>
+        </div>
+        <div class="container bottom-bar">
+          <p>STONE HILL RIDGE // CLASSIFIED // CASE ACTIVE // D.R.R.A. CONTROL</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
