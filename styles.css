@@ -1090,6 +1090,20 @@ body.report-open {
   color: var(--text);
 }
 
+.video-frame.compact-scene {
+  gap: 10px;
+}
+
+.video-frame.compact-scene strong {
+  font-size: clamp(1.65rem, 5vw, 3.2rem);
+}
+
+.video-frame.compact-scene span:not(.video-corner),
+.video-frame.compact-scene small {
+  font-size: clamp(0.5rem, 1.2vw, 0.62rem);
+  line-height: 1.3;
+}
+
 .video-frame small,
 .video-corner {
   color: var(--muted);

@@ -43,6 +43,7 @@
       const title = document.getElementById('videoTitle');
       const description = document.getElementById('videoDescription');
       const detail = document.getElementById('videoDetail');
+      const frame = document.querySelector('.video-frame');
       const progress = document.getElementById('videoProgress');
       const toggle = document.getElementById('videoToggle');
       const status = document.getElementById('videoStatus');
@@ -62,6 +63,7 @@
 
       function showScene() {
         const scene = scenes[captionIndex];
+        frame.classList.toggle('compact-scene', captionIndex >= 2 && captionIndex <= 4);
         title.textContent = scene[0];
         description.textContent = scene[1];
         detail.textContent = scene[2];
