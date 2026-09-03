@@ -17,44 +17,20 @@ const civilianList = document.getElementById('civilianList');
 const civilianSearch = document.getElementById('civilianSearch');
 const civilianCount = document.getElementById('civilianCount');
 const audioToggle = document.getElementById('audioToggle');
+const suspenseTrack = document.getElementById('suspenseTrack');
 
-let suspenseAudio = null;
+let audioEnabled = false;
 
-function toggleSuspenseAudio() {
-  if (!suspenseAudio) {
-    const context = new AudioContext();
-    const output = context.createGain();
-    const drone = context.createOscillator();
-    const pulse = context.createOscillator();
-    const pulseGain = context.createGain();
-    drone.type = 'sine';
-    drone.frequency.value = 54;
-    output.gain.value = 0.035;
-    pulse.type = 'triangle';
-    pulse.frequency.value = 108;
-    pulseGain.gain.value = 0;
-    drone.connect(output);
-    pulse.connect(pulseGain);
-    pulseGain.connect(output);
-    output.connect(context.destination);
-    drone.start();
-    pulse.start();
-    suspenseAudio = { context, output, pulseGain, enabled: true };
-    const beat = () => {
-      const now = context.currentTime;
-      pulseGain.gain.cancelScheduledValues(now);
-      pulseGain.gain.setValueAtTime(0, now);
-      pulseGain.gain.linearRampToValueAtTime(0.045, now + 0.08);
-      pulseGain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
-    };
-    beat();
-    suspenseAudio.beatTimer = window.setInterval(beat, 3600);
+async function toggleSuspenseAudio() {
+  if (audioEnabled) {
+    suspenseTrack.pause();
+    audioEnabled = false;
   } else {
-    suspenseAudio.enabled = !suspenseAudio.enabled;
-    suspenseAudio.output.gain.value = suspenseAudio.enabled ? 0.035 : 0;
+    await suspenseTrack.play();
+    audioEnabled = true;
   }
   if (audioToggle) {
-    audioToggle.textContent = suspenseAudio.enabled ? 'MUTE SUSPENSE AUDIO' : 'ENABLE SUSPENSE AUDIO';
+    audioToggle.textContent = audioEnabled ? 'MUTE SUSPENSE AUDIO' : 'ENABLE SUSPENSE AUDIO';
   }
 }
 
