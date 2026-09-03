@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D.R.R.A. // Welcome Briefing</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="welcome-page">
+    <main class="welcome-shell">
+      <p class="section-tag">D.R.R.A. // DEPARTMENT OF RED RANGE ALERTS</p>
+      <h1>WELCOME TO THE RED RANGE.</h1>
+      <p class="welcome-subtitle">ORIENTATION FILM // INTERNAL USE // STONE HILL RIDGE RESPONSE</p>
+
+      <section class="welcome-video" aria-label="D.R.R.A. welcome video">
+        <div class="video-screen">
+          <div class="video-scan"></div>
+          <div class="video-frame">
+            <span class="video-corner">REC // 1935-ONGOING</span>
+            <strong>D.R.R.A.</strong>
+            <span>DEPARTMENT OF RED RANGE ALERTS</span>
+            <small>PROTECT THE LIVING. PRESERVE THE RECORD.</small>
+          </div>
+          <div class="video-caption" id="welcomeCaption">WELCOME, FIELD OBSERVER.</div>
+        </div>
+        <div class="video-controls">
+          <span class="video-status"><span class="dot"></span>BRIEFING PLAYBACK</span>
+          <button id="videoToggle" type="button">PAUSE BRIEFING</button>
+        </div>
+      </section>
+
+      <div class="welcome-copy">
+        <p id="welcomeNarration">You are entering a restricted D.R.R.A. archive. Stone Hill Ridge was built in 1574. Research beneath the ridge began in 1935. The record is still active.</p>
+        <p>Do not answer voices beneath the floor. Do not restart the east relay. When the briefing ends, proceed to the case file and verify every report against the archive.</p>
+      </div>
+
+      <a class="btn btn-primary" href="index.html">ENTER STONE HILL RIDGE CASE FILE</a>
+    </main>
+    <script>
+      const captions = [
+        'WELCOME, FIELD OBSERVER.',
+        'THE RIDGE REMEMBERS.',
+        'THE ARCHIVE IS NOT EMPTY.',
+        'MERCER’S SIGNAL IS STILL ACTIVE.',
+        'DO NOT ANSWER THE VOICE.',
+        'PROCEED TO THE CASE FILE.'
+      ];
+      const caption = document.getElementById('welcomeCaption');
+      const toggle = document.getElementById('videoToggle');
+      let playing = true;
+      let captionIndex = 0;
+      let timer = setInterval(nextCaption, 2600);
+
+      function nextCaption() {
+        captionIndex = (captionIndex + 1) % captions.length;
+        caption.textContent = captions[captionIndex];
+      }
+
+      toggle.addEventListener('click', function () {
+        playing = !playing;
+        toggle.textContent = playing ? 'PAUSE BRIEFING' : 'PLAY BRIEFING';
+        if (playing) {
+          timer = setInterval(nextCaption, 2600);
+        } else {
+          clearInterval(timer);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1025,6 +1025,121 @@ body.report-open {
   letter-spacing: 0.1em;
 }
 
+.welcome-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.welcome-shell {
+  width: min(900px, 100%);
+  text-align: center;
+}
+
+.welcome-shell h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  letter-spacing: 0.08em;
+}
+
+.welcome-subtitle {
+  color: var(--muted);
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+}
+
+.welcome-video {
+  margin: 32px 0 24px;
+  border: 1px solid var(--gold);
+  background: #020509;
+  box-shadow: var(--shadow);
+}
+
+.video-screen {
+  position: relative;
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle, rgba(217, 198, 141, 0.14), transparent 45%), #050b10;
+}
+
+.video-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 1px, transparent 2px, transparent 5px);
+  animation: scan 5s linear infinite;
+}
+
+.video-frame {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+}
+
+.video-frame strong {
+  font-size: clamp(3rem, 10vw, 7rem);
+  color: var(--text);
+}
+
+.video-frame small,
+.video-corner {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.video-corner {
+  position: absolute;
+  top: -80px;
+  left: 0;
+}
+
+.video-caption {
+  position: absolute;
+  bottom: 28px;
+  color: var(--text);
+  letter-spacing: 0.12em;
+  animation: caption-glow 2s ease-in-out infinite;
+}
+
+.video-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  color: var(--gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.video-controls button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  padding: 7px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.welcome-copy {
+  max-width: 700px;
+  margin: 0 auto 26px;
+  color: var(--muted);
+}
+
+@keyframes scan {
+  from { transform: translateY(-8%); }
+  to { transform: translateY(8%); }
+}
+
+@keyframes caption-glow {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+
 .site-footer ul {
   margin: 0;
   padding: 0;
