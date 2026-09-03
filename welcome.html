@@ -25,7 +25,7 @@
           <div class="video-caption" id="welcomeCaption">WELCOME, FIELD OBSERVER.</div>
         </div>
         <div class="video-controls">
-          <span class="video-status"><span class="dot"></span>BRIEFING PLAYBACK</span>
+          <span class="video-status" id="videoStatus"><span class="dot"></span>BRIEFING PLAYING</span>
           <button id="videoToggle" type="button">PAUSE BRIEFING</button>
         </div>
         <div class="video-progress"><span id="videoProgress"></span></div>
@@ -39,60 +39,56 @@
       <a class="btn btn-primary" href="index.html">ENTER STONE HILL RIDGE CASE FILE</a>
     </main>
     <script>
-      const captions = [
-        'WELCOME, FIELD OBSERVER.',
-        'THE RIDGE REMEMBERS.',
-        'THE ARCHIVE IS NOT EMPTY.',
-        'MERCER’S SIGNAL IS STILL ACTIVE.',
-        'DO NOT ANSWER THE VOICE.',
-        'PROCEED TO THE CASE FILE.'
-      ];
       const caption = document.getElementById('welcomeCaption');
       const title = document.getElementById('videoTitle');
       const description = document.getElementById('videoDescription');
       const detail = document.getElementById('videoDetail');
       const progress = document.getElementById('videoProgress');
       const toggle = document.getElementById('videoToggle');
+      const status = document.getElementById('videoStatus');
       const scenes = [
-        ['D.R.R.A.', 'DEPARTMENT OF RED RANGE ALERTS', 'PROTECT THE LIVING. PRESERVE THE RECORD.'],
-        ['1574', 'STONE HILL RIDGE ESTABLISHED', 'A TOWN BUILT ABOVE AN UNMAPPED ROOT NETWORK.'],
-        ['1935', 'VALE RESEARCH PROGRAM BEGINS', 'HEAT, SOUND, AND ELECTRICITY ENTER THE DEEP CHAMBER.'],
-        ['EAST RELAY', 'SIGNAL CONDUIT ACTIVE', 'THE ARCHIVE BEGINS RETURNING WHAT THE RIDGE REMEMBERED.'],
-        ['F-01', 'BIOHAZARD PATTERN DETECTED', 'FREEZING HOSTS EXTEND THE ROOTS THROUGH THE TOWN.'],
-        ['STATUS: OPEN', 'THE CLIMAX IS ACTIVE', 'MERCER’S SIGNAL HAS NOT STOPPED.']
+        ['D.R.R.A.', 'DEPARTMENT OF RED RANGE ALERTS', 'PROTECT THE LIVING. PRESERVE THE RECORD.', 'WELCOME, FIELD OBSERVER.'],
+        ['1574', 'STONE HILL RIDGE ESTABLISHED', 'A TOWN BUILT ABOVE AN UNMAPPED ROOT NETWORK.', 'THE RIDGE REMEMBERS.'],
+        ['1935', 'VALE RESEARCH PROGRAM BEGINS', 'HEAT, SOUND, AND ELECTRICITY ENTER THE DEEP CHAMBER.', 'THE ARCHIVE IS NOT EMPTY.'],
+        ['EAST RELAY', 'SIGNAL CONDUIT ACTIVE', 'THE ARCHIVE BEGINS RETURNING WHAT THE RIDGE REMEMBERED.', 'MERCER’S SIGNAL IS STILL ACTIVE.'],
+        ['F-01', 'BIOHAZARD PATTERN DETECTED', 'FREEZING HOSTS EXTEND THE ROOTS THROUGH THE TOWN.', 'DO NOT ANSWER THE VOICE.'],
+        ['STATUS: OPEN', 'THE CLIMAX IS ACTIVE', 'MERCER’S SIGNAL HAS NOT STOPPED.', 'PROCEED TO THE CASE FILE.']
       ];
       const sceneDuration = 5200;
       let playing = true;
       let captionIndex = 0;
-      let sceneStartedAt = Date.now();
-      let timer = setInterval(nextCaption, sceneDuration);
-      let progressTimer = setInterval(updateProgress, 80);
+      let sceneStartedAt = performance.now();
 
-      function nextCaption() {
-        captionIndex = (captionIndex + 1) % captions.length;
-        caption.textContent = captions[captionIndex];
+      function showScene() {
         const scene = scenes[captionIndex];
         title.textContent = scene[0];
         description.textContent = scene[1];
         detail.textContent = scene[2];
-        sceneStartedAt = Date.now();
+        caption.textContent = scene[3];
       }
 
-      function updateProgress() {
-        const elapsed = Math.min(sceneDuration, Date.now() - sceneStartedAt);
-        progress.style.width = `${(elapsed / sceneDuration) * 100}%`;
+      function animateBriefing(now) {
+        if (playing) {
+          const elapsed = now - sceneStartedAt;
+          if (elapsed >= sceneDuration) {
+            captionIndex = (captionIndex + 1) % scenes.length;
+            sceneStartedAt = now;
+            showScene();
+          }
+          progress.style.width = `${Math.min(100, ((now - sceneStartedAt) / sceneDuration) * 100)}%`;
+        }
+        window.requestAnimationFrame(animateBriefing);
       }
+
+      showScene();
+      window.requestAnimationFrame(animateBriefing);
 
       toggle.addEventListener('click', function () {
         playing = !playing;
         toggle.textContent = playing ? 'PAUSE BRIEFING' : 'PLAY BRIEFING';
+        status.innerHTML = `<span class="dot"></span>BRIEFING ${playing ? 'PLAYING' : 'PAUSED'}`;
         if (playing) {
-          sceneStartedAt = Date.now();
-          timer = setInterval(nextCaption, sceneDuration);
-          progressTimer = setInterval(updateProgress, 80);
-        } else {
-          clearInterval(timer);
-          clearInterval(progressTimer);
+          sceneStartedAt = performance.now();
         }
       });
     </script>
