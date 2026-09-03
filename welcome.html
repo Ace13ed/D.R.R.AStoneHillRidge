@@ -17,9 +17,10 @@
           <div class="video-scan"></div>
           <div class="video-frame">
             <span class="video-corner">REC // 1935-ONGOING</span>
-            <strong>D.R.R.A.</strong>
-            <span>DEPARTMENT OF RED RANGE ALERTS</span>
-            <small>PROTECT THE LIVING. PRESERVE THE RECORD.</small>
+            <div class="signal-orbit"><span></span><span></span><span></span></div>
+            <strong id="videoTitle">D.R.R.A.</strong>
+            <span id="videoDescription">DEPARTMENT OF RED RANGE ALERTS</span>
+            <small id="videoDetail">PROTECT THE LIVING. PRESERVE THE RECORD.</small>
           </div>
           <div class="video-caption" id="welcomeCaption">WELCOME, FIELD OBSERVER.</div>
         </div>
@@ -27,6 +28,7 @@
           <span class="video-status"><span class="dot"></span>BRIEFING PLAYBACK</span>
           <button id="videoToggle" type="button">PAUSE BRIEFING</button>
         </div>
+        <div class="video-progress"><span id="videoProgress"></span></div>
       </section>
 
       <div class="welcome-copy">
@@ -46,23 +48,51 @@
         'PROCEED TO THE CASE FILE.'
       ];
       const caption = document.getElementById('welcomeCaption');
+      const title = document.getElementById('videoTitle');
+      const description = document.getElementById('videoDescription');
+      const detail = document.getElementById('videoDetail');
+      const progress = document.getElementById('videoProgress');
       const toggle = document.getElementById('videoToggle');
+      const scenes = [
+        ['D.R.R.A.', 'DEPARTMENT OF RED RANGE ALERTS', 'PROTECT THE LIVING. PRESERVE THE RECORD.'],
+        ['1574', 'STONE HILL RIDGE ESTABLISHED', 'A TOWN BUILT ABOVE AN UNMAPPED ROOT NETWORK.'],
+        ['1935', 'VALE RESEARCH PROGRAM BEGINS', 'HEAT, SOUND, AND ELECTRICITY ENTER THE DEEP CHAMBER.'],
+        ['EAST RELAY', 'SIGNAL CONDUIT ACTIVE', 'THE ARCHIVE BEGINS RETURNING WHAT THE RIDGE REMEMBERED.'],
+        ['F-01', 'BIOHAZARD PATTERN DETECTED', 'FREEZING HOSTS EXTEND THE ROOTS THROUGH THE TOWN.'],
+        ['STATUS: OPEN', 'THE CLIMAX IS ACTIVE', 'MERCER’S SIGNAL HAS NOT STOPPED.']
+      ];
+      const sceneDuration = 5200;
       let playing = true;
       let captionIndex = 0;
-      let timer = setInterval(nextCaption, 2600);
+      let sceneStartedAt = Date.now();
+      let timer = setInterval(nextCaption, sceneDuration);
+      let progressTimer = setInterval(updateProgress, 80);
 
       function nextCaption() {
         captionIndex = (captionIndex + 1) % captions.length;
         caption.textContent = captions[captionIndex];
+        const scene = scenes[captionIndex];
+        title.textContent = scene[0];
+        description.textContent = scene[1];
+        detail.textContent = scene[2];
+        sceneStartedAt = Date.now();
+      }
+
+      function updateProgress() {
+        const elapsed = Math.min(sceneDuration, Date.now() - sceneStartedAt);
+        progress.style.width = `${(elapsed / sceneDuration) * 100}%`;
       }
 
       toggle.addEventListener('click', function () {
         playing = !playing;
         toggle.textContent = playing ? 'PAUSE BRIEFING' : 'PLAY BRIEFING';
         if (playing) {
-          timer = setInterval(nextCaption, 2600);
+          sceneStartedAt = Date.now();
+          timer = setInterval(nextCaption, sceneDuration);
+          progressTimer = setInterval(updateProgress, 80);
         } else {
           clearInterval(timer);
+          clearInterval(progressTimer);
         }
       });
     </script>
