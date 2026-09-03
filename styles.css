@@ -1077,10 +1077,12 @@ body.report-open {
 .video-frame {
   position: relative;
   display: grid;
-  gap: 12px;
+  gap: 20px;
+  padding: 0 24px;
   color: var(--gold);
   letter-spacing: 0.18em;
   z-index: 1;
+  line-height: 1.5;
 }
 
 .video-frame strong {
@@ -1092,6 +1094,12 @@ body.report-open {
 .video-corner {
   color: var(--muted);
   font-size: 0.68rem;
+}
+
+.video-frame span:not(.video-corner),
+.video-frame small {
+  max-width: 520px;
+  line-height: 1.7;
 }
 
 .signal-orbit {
