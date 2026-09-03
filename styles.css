@@ -824,6 +824,34 @@ img {
   margin-top: 14px;
 }
 
+.founder-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.founder-layout p + p {
+  margin-top: 14px;
+}
+
+.founder-reveal {
+  margin-top: 22px;
+  border-color: var(--red);
+}
+
+.founder-reveal ol {
+  margin: 0;
+  padding-left: 22px;
+  color: var(--muted);
+  display: grid;
+  gap: 12px;
+}
+
+.founder-reveal .disclaimer {
+  margin-bottom: 0;
+}
+
 body.report-open {
   overflow: hidden;
 }
@@ -947,6 +975,10 @@ body.report-open {
 }
 
 .briefing-grid {
+  grid-template-columns: 1fr;
+}
+
+.founder-layout {
   grid-template-columns: 1fr;
 }
 
