@@ -1018,6 +1018,13 @@ body.report-open {
   text-transform: uppercase;
 }
 
+.footer-contact a {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
 .site-footer ul {
   margin: 0;
   padding: 0;
