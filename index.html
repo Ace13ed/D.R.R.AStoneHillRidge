@@ -22,12 +22,12 @@
         <div class="access-topline">INTERNAL ACCESS</div>
         <h1>STONE HILL RIDGE</h1>
         <p>
-          DETECTIVE JOHN // STATUS: MISSING IN QUARANTINE ZONE. ENTER THE CONFIRMATION CODE TO ACCESS CASE FILES.
+          DETECTIVE JOHN // STATUS: MISSING IN QUARANTINE ZONE. ENTER THE AUTHORIZATION PASSWORD AND PRESS ACCESS FILES TO OPEN THE CASE ARCHIVE.
         </p>
 
         <form id="passwordForm" class="password-form" autocomplete="off">
-          <label for="password">CONFIRMATION CODE</label>
-          <input id="password" type="password" maxlength="4" inputmode="numeric" placeholder="8 4 2 1" />
+          <label for="password">ARCHIVE PASSWORD</label>
+          <input id="password" type="password" maxlength="8" autocomplete="current-password" placeholder="ENTER PASSWORD" required />
           <button type="submit">ACCESS FILES</button>
         </form>
 
@@ -54,6 +54,8 @@
             <a href="#reports">Reports</a>
             <a href="#personnel">Personnel</a>
             <a href="#intel">Intel</a>
+            <a href="#deep-archive">Deep Archive</a>
+            <a href="#civilians">Civilians</a>
             <a href="#data">Data</a>
           </nav>
 
@@ -244,6 +246,56 @@
               </div>
             </div>
 
+            <div class="intel-grid">
+              <div class="intel-panel">
+                <h4>Archive Index // 001-240</h4>
+                <ul>
+                  <li>Municipal call logs: 184 entries, 37 partially overwritten</li>
+                  <li>Thermal camera reels: 62 hours across four sectors</li>
+                  <li>Witness interviews: 91 statements awaiting cross-reference</li>
+                  <li>Infrastructure maps: 18 revisions, including two unregistered corridors</li>
+                  <li>Medical intake forms: 318 records with inconsistent timestamps</li>
+                  <li>Evidence chain is incomplete between the east checkpoint and archive wing</li>
+                </ul>
+              </div>
+              <div class="intel-panel">
+                <h4>Working Hypotheses</h4>
+                <ul>
+                  <li>Subsurface thermal inversion may be carrying the condition through service tunnels</li>
+                  <li>Signal interference appears deliberate where public records were altered</li>
+                  <li>Symptoms may be amplified by prolonged isolation and repeated low-frequency exposure</li>
+                  <li>Several “recovered” residents repeat phrases absent from their prior interviews</li>
+                  <li>Detective Mercer may have staged the final transmission to redirect pursuit</li>
+                  <li>No hypothesis explains the identical temperature drop in sealed rooms</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="intel-grid">
+              <div class="intel-panel">
+                <h4>Evidence Notes // Redacted Review</h4>
+                <ul>
+                  <li>Object R-07: frost pattern forms on the inside of a locked evidence case</li>
+                  <li>Object R-12: cassette recording contains a second voice beneath the official transcript</li>
+                  <li>Object R-19: soil sample from the east tunnel remains below freezing in a heated lab</li>
+                  <li>Object R-24: missing-person photographs show movement between successive frames</li>
+                  <li>Object R-31: access badge used after its registered holder entered medical quarantine</li>
+                  <li>All physical samples require insulated handling and dual-witness logging</li>
+                </ul>
+              </div>
+              <div class="intel-panel">
+                <h4>Outstanding Questions</h4>
+                <ul>
+                  <li>Who edited the quarantine order before the first public alert?</li>
+                  <li>Why do the archive clocks disagree by exactly seventeen minutes?</li>
+                  <li>What is generating the repeated vibration beneath the east block?</li>
+                  <li>Why are unaffected residents reporting the same dream sequence?</li>
+                  <li>Where did Mercer’s restricted notes go after the relay failure?</li>
+                  <li>Can the quarantine boundary be trusted if the records are compromised?</li>
+                </ul>
+              </div>
+            </div>
+
             <div class="timeline-grid">
               <article class="timeline-item">
                 <span class="marker">00:00</span>
@@ -288,6 +340,16 @@
                 <strong>01</strong>
                 <p>Archive access log indicates organized alteration of local public records.</p>
               </div>
+              <div class="dossier-card">
+                <span class="label">Archive Records</span>
+                <strong>1,284</strong>
+                <p>Indexed files, audio reels, maps, lab notes, and sealed correspondence.</p>
+              </div>
+              <div class="dossier-card">
+                <span class="label">Unresolved Signals</span>
+                <strong>47</strong>
+                <p>Repeating transmissions with no confirmed source inside the quarantine boundary.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -319,7 +381,76 @@
             </div>
           </div>
         </section>
+
+        <section id="deep-archive" class="section deep-archive alt-bg">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-tag">DEEP ARCHIVE // 1,000,000 RECORDS</p>
+              <h3>THE LONG-READ INTELLIGENCE INDEX.</h3>
+            </div>
+            <p class="archive-intro">
+              Every entry below is cross-linked to the Stone Hill Ridge investigation. Search by district, evidence type, operative, symptom, or lead. Records are ordered by archive confidence, not chronology.
+            </p>
+            <div class="archive-controls">
+              <label for="archiveSearch">SEARCH ALL ARCHIVE RECORDS</label>
+              <input id="archiveSearch" type="search" placeholder="TRY: MERCER, TUNNEL, CLOCK, VOICE..." />
+              <span id="archiveCount" aria-live="polite"></span>
+            </div>
+            <div id="archiveList" class="archive-list"></div>
+            <p class="archive-note">FULL INDEX DISPLAY // ALL 1,000,000 RECORDS LOADED IN BATCHES</p>
+          </div>
+        </section>
+
+        <section id="civilians" class="section civilian-briefing">
+          <div class="container">
+            <div class="section-heading">
+              <p class="section-tag">CIVILIAN BRIEFING // 358 OF 547</p>
+              <h3>THE PEOPLE WHO HEARD THE TOWN CHANGE.</h3>
+            </div>
+            <div class="briefing-grid">
+              <div class="intel-panel">
+                <h4>Briefing Status</h4>
+                <ul>
+                  <li>547 civilians registered inside the containment boundary</li>
+                  <li>358 civilians completed the mandatory briefing</li>
+                  <li>189 remain unbriefed, missing, hospitalized, or unreachable</li>
+                  <li>Briefings cover tunnel noise, false evacuation routes, and thermal exposure</li>
+                  <li>Every attendee received a sector map with the east archive corridor removed</li>
+                  <li>Attendance records were altered twice after Mercer disappeared</li>
+                </ul>
+              </div>
+              <div class="intel-panel">
+                <h4>Briefing Transcript // Extract</h4>
+                <p class="briefing-quote">“If you hear your name beneath the floor, do not answer. If a familiar voice gives you an exit route, verify it against a paper map. If every clock in the room stops together, leave the room without touching the walls.”</p>
+                <p>Of the 358 attendees, 41 later reported hearing the warning repeated from outside their homes. Twelve described the voice as their own. Three identified the speaker as Detective John Mercer, despite never meeting him.</p>
+              </div>
+            </div>
+            <div class="dossier-grid">
+              <div class="dossier-card"><span class="label">Briefed</span><strong>358</strong><p>Civilians who received the complete quarantine safety briefing.</p></div>
+              <div class="dossier-card"><span class="label">Unaccounted</span><strong>189</strong><p>Registered civilians without a verified post-briefing location.</p></div>
+              <div class="dossier-card"><span class="label">Repeat Voice Reports</span><strong>41</strong><p>Attendees who heard briefing language repeated after midnight.</p></div>
+              <div class="dossier-card"><span class="label">Mercer Identifications</span><strong>03</strong><p>Witnesses who independently named Mercer as the hidden speaker.</p></div>
+            </div>
+            <div class="archive-controls civilian-controls">
+              <label for="civilianSearch">SEARCH CIVILIAN DOSSIERS</label>
+              <input id="civilianSearch" type="search" placeholder="TRY: SECTOR 03, TEACHER, VOICE..." />
+              <span id="civilianCount" aria-live="polite"></span>
+            </div>
+            <div id="civilianList" class="archive-list civilian-list"></div>
+            <p class="archive-note">FICTIONAL RECORDS // IDENTITIES MASKED // 20 PROFILES REMAIN IN VIEW WHILE SCROLLING</p>
+          </div>
+        </section>
       </main>
+
+      <div class="report-modal" id="reportModal" role="dialog" aria-modal="true" aria-labelledby="reportTitle" hidden>
+        <div class="report-modal-backdrop" data-close-report></div>
+        <article class="report-panel">
+          <button class="report-close" type="button" data-close-report aria-label="Close intelligence report">CLOSE FILE</button>
+          <div class="archive-record-meta" id="reportMeta"></div>
+          <h3 id="reportTitle"></h3>
+          <div id="reportBody" class="report-body"></div>
+        </article>
+      </div>
 
       <footer class="site-footer">
         <div class="container footer-grid">
