@@ -27,6 +27,7 @@
         <div class="video-controls">
           <span class="video-status" id="videoStatus"><span class="dot"></span>BRIEFING PLAYING</span>
           <button id="videoToggle" type="button">PAUSE BRIEFING</button>
+          <button id="audioToggle" type="button">ENABLE SUSPENSE AUDIO</button>
         </div>
         <div class="video-progress"><span id="videoProgress"></span></div>
       </section>
@@ -47,6 +48,8 @@
       const progress = document.getElementById('videoProgress');
       const toggle = document.getElementById('videoToggle');
       const status = document.getElementById('videoStatus');
+      const audioToggle = document.getElementById('audioToggle');
+      let suspenseAudio = null;
       const scenes = [
         ['D.R.R.A.', 'DEPARTMENT OF RED RANGE ALERTS', 'DETECT. CONTAIN. DOCUMENT. RECOVER.', 'WELCOME, NEW PERSONNEL.'],
         ['01 // INTAKE', 'REPORTS ENTER THROUGH THE RED DESK', 'CALLS, SENSOR FLAGS, AND FIELD NOTES RECEIVE A TIME-STAMPED ID.', 'NO REPORT IS DISCARDED.'],
@@ -68,6 +71,41 @@
         description.textContent = scene[1];
         detail.textContent = scene[2];
         caption.textContent = scene[3];
+      }
+
+      function toggleSuspenseAudio() {
+        if (!suspenseAudio) {
+          const context = new AudioContext();
+          const output = context.createGain();
+          const drone = context.createOscillator();
+          const pulse = context.createOscillator();
+          const pulseGain = context.createGain();
+          drone.type = 'sine';
+          drone.frequency.value = 54;
+          output.gain.value = 0.035;
+          pulse.type = 'triangle';
+          pulse.frequency.value = 108;
+          pulseGain.gain.value = 0;
+          drone.connect(output);
+          pulse.connect(pulseGain);
+          pulseGain.connect(output);
+          drone.start();
+          pulse.start();
+          output.connect(context.destination);
+          suspenseAudio = { output, pulseGain, context, enabled: true };
+          const beat = () => {
+            const now = context.currentTime;
+            pulseGain.gain.setValueAtTime(0, now);
+            pulseGain.gain.linearRampToValueAtTime(0.045, now + 0.08);
+            pulseGain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+          };
+          beat();
+          suspenseAudio.beatTimer = window.setInterval(beat, 3600);
+        } else {
+          suspenseAudio.enabled = !suspenseAudio.enabled;
+          suspenseAudio.output.gain.value = suspenseAudio.enabled ? 0.035 : 0;
+        }
+        audioToggle.textContent = suspenseAudio.enabled ? 'MUTE SUSPENSE AUDIO' : 'ENABLE SUSPENSE AUDIO';
       }
 
       function animateBriefing(now) {
@@ -94,6 +132,7 @@
           sceneStartedAt = performance.now();
         }
       });
+      audioToggle.addEventListener('click', toggleSuspenseAudio);
     </script>
   </body>
 </html>
