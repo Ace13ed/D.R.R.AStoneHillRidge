@@ -98,6 +98,22 @@ const civilianObservations = [
   'experienced no symptoms but repeated the warning in an unknown voice',
   'heard the municipal siren answer from underground'
 ];
+const civilianBiographies = [
+  'Before the quarantine, the subject kept a careful paper calendar for every shift and family obligation. The calendar became the first personal record to show a seventeen-minute gap.',
+  'The subject grew up near the reservoir and knows the old maintenance paths better than the municipal maps admit. They recognized the vibration before officials named it.',
+  'The subject worked nights and learned which buildings stayed lit after the town-wide power failures. Their testimony places an unregistered response vehicle near the archive.',
+  'The subject volunteered at the school shelter and remembers children repeating a warning that had not yet been delivered by the briefing team.',
+  'The subject had no prior connection to Mercer but kept a radio tuned to the emergency channel. A fragment of Mercer’s final transmission was recorded in the background of a family message.',
+  'The subject repairs clocks and insists the town network did not drift randomly. Every stopped clock belonged to a building connected to the east service corridor.'
+];
+const civilianPersonalNotes = [
+  'Personal note: asks that the east corridor not be described as empty when families are still waiting there.',
+  'Personal note: refuses to sleep beside a wall and keeps every door open by exactly two inches.',
+  'Personal note: believes the missing civilians are being counted as casualties to make the ledger look complete.',
+  'Personal note: drew the same spiral heard in the tunnel vibration without being shown the recovered evidence.',
+  'Personal note: requested Mercer’s name be left in the briefing because removing it made the room colder.',
+  'Personal note: says the voice beneath the floor knows private names, but not the names written on official forms.'
+];
 
 function getCivilianRecord(index) {
   const briefed = index < 358;
@@ -109,7 +125,9 @@ function getCivilianRecord(index) {
     sector: String((index % 4) + 1).padStart(2, '0'),
     status: briefed ? 'BRIEFED' : 'UNBRIEFED / UNVERIFIED',
     opinion: civilianOpinions[(index * 5) % civilianOpinions.length],
-    observation: civilianObservations[(index * 11) % civilianObservations.length]
+    observation: civilianObservations[(index * 11) % civilianObservations.length],
+    biography: civilianBiographies[(index * 7) % civilianBiographies.length],
+    personalNote: civilianPersonalNotes[(index * 13) % civilianPersonalNotes.length]
   };
 }
 
@@ -238,9 +256,11 @@ function openCivilianReport(record) {
   reportBody.innerHTML = `
     <p class="report-lead">CIVILIAN PROFILE: ${record.name}, AGE ${record.age}, ${record.occupation}. This is a fictionalized quarantine record prepared from the Stone Hill Ridge civilian briefing ledger.</p>
     <section><h4>01 // Briefing record</h4><p>Status: ${record.status}. The subject was logged against the sector map and warned not to answer voices beneath the floor, follow unverified evacuation calls, or touch walls during a synchronized clock failure.</p></section>
-    <section><h4>02 // Personal account</h4><p>${record.opinion}. The subject gave this opinion during a controlled debriefing and connected it to the disappearance of Detective John Mercer.</p></section>
-    <section><h4>03 // Observation</h4><p>${record.observation}. No claim is treated as proof until it is matched against thermal reels, relay telemetry, or a second civilian statement.</p></section>
-    <section><h4>04 // Analyst notes</h4><p>The profile is relevant because civilian testimony is the only surviving record of several events erased from municipal logs. Differences between accounts may indicate stress, deliberate misinformation, or a repeating influence moving through the town infrastructure.</p></section>
+    <section><h4>02 // Biography</h4><p>${record.biography}</p></section>
+    <section><h4>03 // Personal account</h4><p>${record.opinion}. The subject gave this opinion during a controlled debriefing and connected it to the disappearance of Detective John Mercer.</p></section>
+    <section><h4>04 // Personal notes</h4><p>${record.personalNote}</p></section>
+    <section><h4>05 // Observation</h4><p>${record.observation}. No claim is treated as proof until it is matched against thermal reels, relay telemetry, or a second civilian statement.</p></section>
+    <section><h4>06 // Analyst notes</h4><p>The profile is relevant because civilian testimony is the only surviving record of several events erased from municipal logs. Differences between accounts may indicate stress, deliberate misinformation, or a repeating influence moving through the town infrastructure. The subject’s biography also establishes what they knew before exposure, helping investigators distinguish inherited local knowledge from Freezing-related suggestion.</p></section>
     <div class="report-signoff">FILE STATUS: ${record.status} // IDENTITY MASKED // CROSS-LINKS: CIVILIAN BRIEFING / MERCER / EAST RELAY</div>
   `;
   reportModal.hidden = false;
