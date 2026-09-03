@@ -285,6 +285,8 @@ img {
 }
 
 .dot {
+  display: inline-block;
+  flex: 0 0 8px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -1103,6 +1105,7 @@ body.report-open {
   transform: translate(-50%, -50%);
   animation: orbit-spin 12s linear infinite;
   pointer-events: none;
+  opacity: 0.42;
 }
 
 .signal-orbit::before,
@@ -1140,6 +1143,11 @@ body.report-open {
   left: 0;
 }
 
+.video-frame > :not(.signal-orbit) {
+  position: relative;
+  z-index: 2;
+}
+
 .video-caption {
   position: absolute;
   bottom: 28px;
@@ -1169,6 +1177,13 @@ body.report-open {
   color: var(--gold);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
+}
+
+.video-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
 }
 
 .video-controls button {
