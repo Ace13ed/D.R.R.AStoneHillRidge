@@ -852,6 +852,31 @@ img {
   margin-bottom: 0;
 }
 
+.specimen-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.specimen-layout p + p {
+  margin-top: 14px;
+}
+
+.specimen-layout ul,
+.specimen-reveal ol {
+  margin: 18px 0 0;
+  padding-left: 22px;
+  color: var(--muted);
+  display: grid;
+  gap: 10px;
+}
+
+.specimen-reveal {
+  margin-top: 22px;
+  border-color: var(--red);
+}
+
 body.report-open {
   overflow: hidden;
 }
@@ -979,6 +1004,10 @@ body.report-open {
 }
 
 .founder-layout {
+  grid-template-columns: 1fr;
+}
+
+.specimen-layout {
   grid-template-columns: 1fr;
 }
 
