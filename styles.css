@@ -1095,12 +1095,12 @@ body.report-open {
 }
 
 .video-frame.compact-scene strong {
-  font-size: clamp(1.65rem, 5vw, 3.2rem);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
 }
 
 .video-frame.compact-scene span:not(.video-corner),
 .video-frame.compact-scene small {
-  font-size: clamp(0.5rem, 1.2vw, 0.62rem);
+  font-size: clamp(0.46rem, 0.85vw, 0.58rem);
   line-height: 1.3;
 }
 
